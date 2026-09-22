@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Ara — Happy Birthday ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap');
+
+:root{
+  --rose:#d99aaa; --deep:#5d2639; --cream:#fff9f5; --gold:#c89d5b;
+  --ink:#35252b; --soft:#f7e7e9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+  background:#170d12;
+}
+button,input{font:inherit}
+button{cursor:pointer;border:0}
+#app{width:100%;height:100%;position:relative;overflow:hidden}
+.slide{
+  position:absolute;inset:0;display:none;overflow:hidden;
+  animation:slideIn .9s ease both;
+}
+.slide.active{display:flex}
+@keyframes slideIn{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:scale(1)}}
+.noise{position:absolute;inset:0;opacity:.055;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.gold{color:var(--gold)}
+.script{font-family:"Great Vibes",cursive}
+.serif{font-family:"Cormorant Garamond",serif}
+
+/* PASSWORD */
+#lock{align-items:center;justify-content:center;background:
+ radial-gradient(circle at 50% 20%,#633b48 0,#2a151d 42%,#10090d 100%)}
+.lock-card{
+ width:min(430px,92vw);padding:34px 28px 28px;text-align:center;border-radius:30px;
+ background:rgba(255,250,247,.095);border:1px solid rgba(255,255,255,.16);
+ box-shadow:0 30px 90px #0008, inset 0 1px #fff2;backdrop-filter:blur(18px);
+ color:white;position:relative
+}
+.lock-card:before{content:"";position:absolute;width:180px;height:180px;left:-80px;top:-70px;border-radius:50%;background:#efb4c8;filter:blur(70px);opacity:.3}
+.tiny{letter-spacing:4px;text-transform:uppercase;font-size:10px;opacity:.72}
+.lock-card h1{font-family:"Great Vibes";font-size:50px;font-weight:400;margin:12px 0 4px}
+.lock-card p{margin:0 0 20px;opacity:.78;font-size:13px}
+.display{
+ height:54px;border-radius:16px;background:#fff;color:#4b2733;display:flex;align-items:center;
+ justify-content:center;font-size:25px;letter-spacing:10px;margin:0 auto 16px;box-shadow:inset 0 0 0 1px #fff,0 10px 30px #0002
+}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.key{
+ height:52px;border-radius:15px;background:#ffffff12;color:white;border:1px solid #fff1;
+ transition:.18s;box-shadow:inset 0 1px #fff1
+}
+.key:hover{background:#fff2;transform:translateY(-2px)}
+.key:active{transform:scale(.96)}
+.key.zero{grid-column:2}
+.key.clear{background:#8c41541c}
+.hint{min-height:30px;margin-top:14px;font-size:12px;color:#f6bdc9}
+.shake{animation:shake .42s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
+
+/* GIFT */
+#gift{align-items:center;justify-content:center;background:
+radial-gradient(circle at 50% 45%,#fff3f0 0,#f4d5dc 35%,#a86a7b 100%)}
+.gift-wrap{text-align:center;position:relative;z-index:2}
+.gift-title{font-family:"Great Vibes";font-size:54px;color:#542536;margin-bottom:28px}
+.gift{
+ width:190px;height:150px;position:relative;margin:auto;filter:drop-shadow(0 30px 22px #5d263944);
+ animation:float 2.8s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-11px)}}
+.gift-box{position:absolute;left:18px;right:18px;bottom:0;height:112px;border-radius:8px 8px 14px 14px;background:linear-gradient(100deg,#8f294c,#d66b88,#8d2948)}
+.gift-lid{position:absolute;left:10px;right:10px;top:22px;height:35px;border-radius:8px;background:linear-gradient(100deg,#9b2c50,#e17b96,#922849);z-index:3}
+.ribbon-v{position:absolute;left:78px;top:18px;width:34px;height:132px;background:linear-gradient(90deg,#f4d18c,#c99a51,#f3d38d);z-index:4}
+.ribbon-h{position:absolute;left:10px;right:10px;top:38px;height:25px;background:linear-gradient(#f2d08b,#bd914c,#efd08b);z-index:5}
+.bow{position:absolute;left:70px;top:-3px;width:50px;height:40px;z-index:6}
+.bow:before,.bow:after{content:"";position:absolute;width:31px;height:25px;background:#d4aa61;border:3px solid #f4d99b;border-radius:70% 15% 70% 15%}
+.bow:before{transform:rotate(25deg);left:-5px}.bow:after{transform:scaleX(-1) rotate(25deg);right:-5px}
+.gift-note{margin-top:22px;color:#6a3445;font-size:13px;letter-spacing:1px}
+.tap{margin-top:8px;font-weight:600;color:#5a2437}
+
+/* BLOOM */
+#bloom{background:#130d0e;align-items:center;justify-content:center}
+.flower-scene{position:absolute;inset:0;background:
+linear-gradient(to bottom,rgba(16,8,10,.15),rgba(9,8,7,.72)),
+url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=90") center/cover no-repeat;
+filter:saturate(1.08);transform:scale(1.04);animation:zoomBloom 5s ease both}
+@keyframes zoomBloom{from{transform:scale(1.16);filter:blur(8px) saturate(.75)}to{transform:scale(1);filter:blur(0) saturate(1.08)}}
+.bloom-text{z-index:2;text-align:center;color:#fff;text-shadow:0 5px 35px #000;animation:fadeUp 2s 1.1s both}
+.bloom-text .small{letter-spacing:7px;font-size:11px}.bloom-text h1{font-family:"Great Vibes";font-size:clamp(70px,13vw,150px);font-weight:400;margin:8px 0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}.bloom-next{
+ margin-top:30px;padding:13px 25px;border-radius:999px;
+ color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);
+ backdrop-filter:blur(12px);box-shadow:0 10px 30px #0005;
+ font-size:12px;letter-spacing:1.5px;transition:.3s
+}
+.bloom-next:hover{background:rgba(255,255,255,.28);transform:translateY(-3px)}
+.bloom-next:active{transform:scale(.96)}
+
+
+ .final-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.final-btn{
+ padding:13px 22px;border-radius:999px;background:#6d3348;color:white;
+ border:1px solid #fff5;box-shadow:0 10px 25px #6d334833;
+ transition:.25s;font-size:12px
+}
+.final-btn:hover{transform:translateY(-3px);box-shadow:0 15px 30px #6d334855}
+.final-btn.ghost{background:#ffffff80;color:#633448;border-color:#fff}
+
+
+/* COMMON */
+.next{
+ position:absolute;bottom:25px;right:25px;z-index:10;padding:11px 17px;border-radius:99px;
+ background:#fff9;color:#442532;backdrop-filter:blur(10px);font-size:12px;border:1px solid #fff8
+}
+.dots{position:absolute;bottom:25px;left:25px;z-index:10;display:flex;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#fff5}.dot.on{background:#fff;box-shadow:0 0 10px #fff}
+
+/* SLIDE 1 */
+#s1{align-items:center;justify-content:center;background:
+radial-gradient(circle at 50% 10%,#fffdf8,#f7e3df 50%,#c58a99 100%)}
+.decor{position:absolute;inset:0;pointer-events:none}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#d3a55c;box-shadow:0 0 12px #d3a55c;animation:twinkle 2s infinite}
+@keyframes twinkle{50%{opacity:.15;transform:scale(.5)}}
+.bday{z-index:2;text-align:center;width:min(720px,92vw)}
+.bday h2{font-family:"Great Vibes";font-weight:400;font-size:clamp(65px,10vw,115px);margin:0;color:#632b3e}
+.subtitle{letter-spacing:5px;text-transform:uppercase;font-size:11px;color:#9b6573}
+.cake-area{position:relative;width:330px;height:280px;margin:8px auto 0}
+.plate{position:absolute;width:310px;height:32px;bottom:20px;left:10px;border-radius:50%;background:linear-gradient(#fff,#ead8d4);box-shadow:0 12px 18px #6d394425}
+.cake{position:absolute;left:55px;bottom:42px;width:220px;height:145px}
+.layer{position:absolute;left:0;right:0;border-radius:12px 12px 22px 22px;background:linear-gradient(#f8c9d2,#d98299);box-shadow:inset 0 -10px #bd637c,0 12px 14px #71344922}
+.l1{height:65px;bottom:0}.l2{height:52px;bottom:51px;left:13px;right:13px;background:linear-gradient(#fff2f1,#e5a6b1)}
+.icing{position:absolute;left:16px;right:16px;bottom:95px;height:24px;background:#fff6f2;border-radius:10px 10px 18px 18px;box-shadow:0 5px 0 #dca1ac}
+.cherry{position:absolute;width:13px;height:13px;border-radius:50%;background:#8e2441;top:45px}
+.cherry:nth-child(1){left:38px}.cherry:nth-child(2){left:103px}.cherry:nth-child(3){right:42px}
+.candle{position:absolute;bottom:133px;left:50%;transform:translateX(-50%);width:12px;height:56px;border-radius:5px;background:repeating-linear-gradient(135deg,#fff 0 7px,#d9869b 7px 13px);z-index:5}
+.flame{position:absolute;left:50%;top:-29px;transform:translateX(-50%);width:18px;height:27px;border-radius:50% 50% 50% 50%;background:radial-gradient(circle at 50% 70%,#fff7a5 0 22%,#ffbd4d 25% 58%,#ed6b38 65%);filter:drop-shadow(0 0 12px #ff9a3c);animation:flicker .18s infinite alternate}
+@keyframes flicker{to{transform:translateX(-50%) scale(.82) rotate(3deg)}}
+.flame.off{display:none}
+.candle-msg{font-size:12px;color:#865665;margin-top:-8px;letter-spacing:1px}
+
+/* SLIDE 2 */
+#s2{align-items:center;justify-content:center;background:
+linear-gradient(120deg,#d4b6a5,#8e6c61 55%,#3c2c2a)}
+.paper{
+ position:relative;width:min(770px,88vw);height:min(78vh,650px);padding:55px 65px;
+ background:#f7ecd5;box-shadow:0 35px 80px #0008,0 2px 0 #fff8 inset;
+ transform:rotate(-1deg);overflow:hidden;color:#503d36;
+}
+.letter-scroll{
+ position:relative;z-index:2;
+ height:calc(100% - 48px);
+ overflow-y:auto;
+ overflow-x:hidden;
+ padding:0 18px 24px 8px;
+ scroll-behavior:smooth;
+ -webkit-overflow-scrolling:touch;
+ overscroll-behavior:contain;
+ cursor:grab;
+}
+.letter-scroll:active{cursor:grabbing}
+.letter-scroll::-webkit-scrollbar{width:7px}
+.letter-scroll::-webkit-scrollbar-track{background:#8d66531c;border-radius:99px}
+.letter-scroll::-webkit-scrollbar-thumb{background:#9a6a7180;border-radius:99px}
+.letter-scroll{scrollbar-width:thin;scrollbar-color:#9a6a7180 #8d66531c}
+.paper:before{content:"";position:absolute;inset:0;opacity:.28;background:repeating-linear-gradient(0deg,transparent 0 31px,#9d765b22 32px)}
+.paper:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px #8b654033;pointer-events:none}
+.paper h2{font-family:"Great Vibes";font-size:58px;font-weight:400;margin:0 0 14px;text-align:center;color:#73394b;flex:0 0 auto}
+.letter{position:relative;z-index:2;font-family:"Cormorant Garamond";font-size:20px;line-height:1.5;text-align:center;padding-bottom:12px}
+.letter p{overflow:visible;word-break:normal;overflow-wrap:anywhere}
+.letter p{margin:9px 0}
+.signature{margin-top:20px;font-family:"Great Vibes";font-size:37px;text-align:right;color:#73394b}
+
+/* SLIDE 3 */
+#s3{align-items:center;justify-content:center;background:
+radial-gradient(circle at 50% 45%,#fffaf2,#f0d4d9 55%,#b8788c)}
+.bouquet-wrap{text-align:center;z-index:2}
+.bouquet-wrap h2{font-family:"Great Vibes";font-size:62px;font-weight:400;color:#663348;margin:0 0 4px}
+.bouquet-wrap p{font-size:12px;letter-spacing:2px;color:#754b5a}
+.bouquet{
+ position:relative;width:min(470px,90vw);height:390px;margin:auto;
+}
+.stem{position:absolute;bottom:35px;left:50%;width:5px;height:270px;background:#53765a;transform-origin:bottom;border-radius:5px}
+.stem.s2{transform:rotate(-14deg)}.stem.s3{transform:rotate(15deg)}.stem.s4{transform:rotate(-27deg)}.stem.s5{transform:rotate(27deg)}
+.flower{
+ position:absolute;width:92px;height:92px;border-radius:50%;cursor:pointer;transition:.5s;
+ filter:drop-shadow(0 15px 12px #5e314122)
+}
+.flower .petal{position:absolute;left:31px;top:0;width:30px;height:47px;border-radius:70% 70% 45% 45%;background:linear-gradient(120deg,#fff,#df8ea6);transform-origin:15px 45px}
+.flower .petal:nth-child(2){transform:rotate(72deg)}.flower .petal:nth-child(3){transform:rotate(144deg)}.flower .petal:nth-child(4){transform:rotate(216deg)}.flower .petal:nth-child(5){transform:rotate(288deg)}
+.flower .center{position:absolute;left:34px;top:34px;width:24px;height:24px;border-radius:50%;background:#d5a65d;box-shadow:0 0 0 5px #fff5}
+.f1{left:80px;top:55px}.f2{left:200px;top:5px}.f3{right:65px;top:75px}.f4{left:130px;top:155px}.f5{right:135px;top:170px}
+.flower.collected{transform:scale(.1) rotate(260deg);opacity:0}
+.bouquet-msg{height:28px;color:#633448;font-weight:600}
+
+/* SLIDE 4 */
+#s4{align-items:center;justify-content:center;background:
+linear-gradient(135deg,#17131b,#3a2536 55%,#8a5d6e)}
+.music-card{
+ width:min(650px,90vw);padding:45px 38px;border:1px solid #fff2;border-radius:32px;
+ background:#ffffff0d;backdrop-filter:blur(22px);box-shadow:0 30px 80px #0008;color:white;text-align:center
+}
+.vinyl{width:190px;height:190px;margin:0 auto 25px;border-radius:50%;background:repeating-radial-gradient(circle,#171318 0 3px,#252029 4px 6px);box-shadow:0 20px 35px #0009;position:relative;animation:spin 5s linear infinite;animation-play-state:paused}
+.vinyl.play{animation-play-state:running}
+.vinyl:after{content:"";position:absolute;inset:65px;border-radius:50%;background:#d99aaa;box-shadow:inset 0 0 0 10px #5a263a}
+@keyframes spin{to{transform:rotate(360deg)}}
+.music-card h2{font-family:"Great Vibes";font-size:54px;font-weight:400;margin:5px}
+.music-card p{opacity:.72;font-size:12px}
+.music-controls{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.playbtn{padding:13px 25px;border-radius:99px;background:#f4d6dc;color:#57283a;font-weight:700}
+.filebtn{padding:13px 18px;border:1px solid #fff3;border-radius:99px;background:#fff1;color:#fff;cursor:pointer;font-size:12px}
+#audio{width:min(430px,100%);margin-top:15px}
+
+/* SLIDE 5 */
+#s5{align-items:center;justify-content:center;background:
+radial-gradient(circle at 50% 20%,#fff9f4,#f2d7de 50%,#b8788a)}
+.thanks{text-align:center;width:min(760px,90vw);z-index:2}
+.thanks .eyebrow{letter-spacing:7px;text-transform:uppercase;font-size:10px;color:#7a5260}
+.thanks h1{font-family:"Great Vibes";font-size:clamp(75px,12vw,135px);font-weight:400;color:#632b3e;margin:4px 0}
+.thanks p{font-family:"Cormorant Garamond";font-size:23px;line-height:1.45;color:#5e414a}
+.from{margin-top:26px;font-family:"Great Vibes";font-size:45px;color:#73394b}
+.heart{font-size:38px;display:inline-block;animation:heartbeat 1.1s infinite}
+@keyframes heartbeat{50%{transform:scale(1.18)}}
+
+/* transitions */
+#transition{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;background:#fff}
+#transition.go{animation:transition .9s ease both}
+@keyframes transition{0%{opacity:0}30%{opacity:1}70%{opacity:1}100%{opacity:0}}
+.flower-fall{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.flower-fall i{position:absolute;top:-30px;width:13px;height:18px;border-radius:100% 0 100% 0;background:#d8879b;animation:fall 3s linear forwards;opacity:.8}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:0}}
+
+@media(max-width:600px){
+ .lock-card{padding:27px 20px}.lock-card h1{font-size:44px}
+ .paper{height:80vh;padding:36px 25px}.paper h2{font-size:47px}.letter{font-size:17px}
+ .cake-area{transform:scale(.85);margin-top:-3px}
+ .bouquet{transform:scale(.78);margin:-35px auto}
+}
+
+.back-btn{
+ position:absolute;left:25px;bottom:25px;z-index:50;
+ padding:11px 17px;border-radius:99px;
+ background:#fff9;color:#442532;
+ backdrop-filter:blur(10px);font-size:12px;
+ border:1px solid #fff8;box-shadow:0 8px 22px #0001;
+ transition:.25s;
+}
+.back-btn:hover{transform:translateY(-3px);background:#fff}
+.final-back{position:relative;left:auto;bottom:auto;margin-top:18px}
+#s5{overflow-y:auto;overflow-x:hidden}
+@media(max-width:600px){
+ .back-btn{left:15px;bottom:15px;padding:10px 14px}
+ .next{right:15px;bottom:15px}
+ .final-actions{padding-bottom:4px}
+}
+
+
+.letter-scroll::after{
+ content:"Geser untuk membaca ↓";
+ display:block;
+ text-align:center;
+ font-family:"DM Sans",sans-serif;
+ font-size:10px;
+ letter-spacing:1px;
+ color:#8a6470;
+ opacity:.65;
+ padding:14px 0 4px;
+}
+
+</style>
+</head>
+<body>
+<div id="app">
+
+<section id="lock" class="slide active">
+  <div class="lock-card" id="lockCard">
+    <div class="tiny">A little surprise for</div>
+    <h1>Ara ♡</h1>
+    <p>Masukkan password untuk membuka hadiah kecil ini.</p>
+    <div class="display" id="display">••••••</div>
+    <div class="keypad">
+      <button class="key" onclick="press('1')">1</button><button class="key" onclick="press('2')">2</button><button class="key" onclick="press('3')">3</button>
+      <button class="key" onclick="press('4')">4</button><button class="key" onclick="press('5')">5</button><button class="key" onclick="press('6')">6</button>
+      <button class="key" onclick="press('7')">7</button><button class="key" onclick="press('8')">8</button><button class="key" onclick="press('9')">9</button>
+      <button class="key clear" onclick="clearPass()">⌫</button><button class="key zero" onclick="press('0')">0</button><button class="key clear" onclick="checkPass()">✓</button>
+    </div>
+    <div class="hint" id="hint">Passwordnya ulang tahun kamu cantik ♡</div>
+  </div>
+</section>
+
+<section id="gift" class="slide">
+ <div class="gift-wrap">
+  <div class="gift-title">Ada hadiah buat kamu...</div>
+  <div class="gift" onclick="go(2)">
+    <div class="bow"></div><div class="gift-lid"></div><div class="gift-box"></div><div class="ribbon-v"></div><div class="ribbon-h"></div>
+  </div>
+  <div class="gift-note">Satu langkah lagi.</div>
+  <div class="tap">♡ Pencet kadonya ♡</div>
+ </div>
+</section>
+
+<section id="bloom" class="slide">
+ <div class="flower-scene"></div>
+ <div class="bloom-text">
+   <div class="small">A NEW CHAPTER BEGINS</div>
+   <h1>Happy Birthday</h1>
+   <div>for someone special ♡</div>
+   <button class="bloom-next" onclick="go(3)">🌸 Lanjut ke Ucapan Ara →</button>
+ </div>
+ <div class="flower-fall" id="flowerFall"></div>
+</section>
+
+<section id="s1" class="slide">
+ <div class="decor" id="decor"></div>
+ <div class="bday">
+  <div class="subtitle">22 September • Birthday No. 18</div>
+  <h2>Happy Birthday Ara</h2>
+  <div class="cake-area">
+    <div class="cake">
+      <div class="layer l1"></div><div class="layer l2"></div><div class="icing"></div>
+      <div class="cherry"></div><div class="cherry"></div><div class="cherry"></div>
+      <div class="candle" onclick="blow()"><div class="flame" id="flame"></div></div>
+    </div>
+    <div class="plate"></div>
+  </div>
+  <div class="candle-msg" id="candleMsg">Pencet lilinnya untuk membuat harapan ✨</div>
+ </div>
+ <button class="next" onclick="go(4)">💌 Lanjut ke Surat →</button><div class="dots" id="dots1"></div>
+</section>
+
+<section id="s2" class="slide">
+ <div class="paper">
+  <h2>Untuk Ara ♡</h2>
+  <div class="letter">
+   <p>Selamat ulang tahun yang ke-18, Ara.</p>
+   <p>Semoga di umur yang baru ini, hari-harimu dipenuhi banyak hal baik, orang-orang yang tulus, dan alasan untuk terus tersenyum.</p>
+   <p>Semoga semua yang sedang kamu perjuangkan pelan-pelan menemukan jalannya. Kalau ada hari yang terasa berat, semoga kamu selalu ingat bahwa kamu sudah melewati banyak hal sampai sejauh ini.</p>
+   <p>Jangan terlalu keras sama diri sendiri. Nikmati prosesnya, jaga kesehatan, tetap jadi Ara yang apa adanya, dan jangan lupa untuk istirahat ketika capek.</p>
+   <p>Semoga satu per satu doa yang kamu simpan diam-diam bisa menjadi nyata. Dan semoga tahun ini membawa cerita-cerita indah yang suatu hari nanti bisa kamu kenang sambil tersenyum.</p>
+   <div class="signature">From Gada ♡</div>
+  </div>
+ </div>
+ <button class="next" onclick="go(5)">💐 Lanjut ke Bouquet →</button>
+</section>
+
+<section id="s3" class="slide">
+ <div class="bouquet-wrap">
+  <h2>Bloom for Ara</h2><p>Klik semua bunganya untuk membuat bouquet ini mekar 🌷</p>
+  <div class="bouquet">
+   <div class="stem"></div><div class="stem s2"></div><div class="stem s3"></div><div class="stem s4"></div><div class="stem s5"></div>
+   <div class="flower f1" onclick="pickFlower(this)"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i></div>
+   <div class="flower f2" onclick="pickFlower(this)"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i></div>
+   <div class="flower f3" onclick="pickFlower(this)"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i></div>
+   <div class="flower f4" onclick="pickFlower(this)"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i></div>
+   <div class="flower f5" onclick="pickFlower(this)"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="center"></i></div>
+  </div>
+  <div class="bouquet-msg" id="bouquetMsg">0 / 5 bunga terkumpul</div>
+ </div>
+ <button class="next" onclick="go(6)">🎵 Lanjut ke Lagu →</button>
+</section>
+
+<section id="s4" class="slide">
+ <div class="music-card">
+   <div class="vinyl" id="vinyl"></div>
+   <div class="tiny">A song for your day</div>
+   <h2>Born To Die ♫</h2>
+   <p>Lagu untuk Ara — Lana Del Rey.</p>
+   <div style="position:relative;width:min(560px,100%);aspect-ratio:16/9;margin:18px auto 8px;border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #0007;background:#111">
+    <iframe
+      id="ytPlayer"
+      width="100%"
+      height="100%"
+      src="https://www.youtube.com/embed/4lq9bBw2Xqc?rel=0"
+      title="Born To Die — Lana Del Rey"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="display:block">
+    </iframe>
+   </div>
+   <div id="songName" style="font-size:11px;opacity:.65;margin-top:10px">Born To Die — Lana Del Rey</div>
+ </div>
+ <button class="back-btn" onclick="go(5)">← Kembali</button>
+ <button class="next" onclick="go(7)">💗 Lanjut ke Penutup →</button>
+</section>
+
+<section id="s5" class="slide">
+ <div class="flower-fall" id="finalFlowers"></div>
+ <div class="thanks">
+  <div class="eyebrow">The last little surprise</div>
+  <h1>Thank You, Ara</h1>
+  <p>Terima kasih sudah membuka hadiah kecil ini sampai selesai. Semoga ulang tahunmu hari ini menjadi awal dari banyak hal indah yang akan datang.</p>
+  <div class="heart">♡</div>
+  <div class="from">From Gada</div>
+  <div class="final-actions">
+    <button class="final-btn" onclick="finalFlowers()">🌸 Mekarkan Bunganya</button>
+    <button class="final-btn ghost" onclick="restartAll()">↻ Mulai Lagi</button>
+  </div>
+ </div>
+</section>
+
+<div id="transition"></div>
+</div>
+
+<script>
+let current=0, pass="";
+const slides=["lock","gift","bloom","s1","s2","s3","s4","s5"];
+function show(id){
+ document.querySelectorAll(".slide").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+}
+function go(index){
+ const tr=document.getElementById("transition");
+ tr.classList.remove("go"); void tr.offsetWidth; tr.classList.add("go");
+ setTimeout(()=>show(slides[index]),260);
+ if(index===2) makeFlowers();
+ current=index;
+}
+function press(n){
+ if(pass.length>=6)return;
+ pass+=n;
+ document.getElementById("display").textContent="•".repeat(pass.length)+" ".repeat(6-pass.length);
+ if(pass.length===6) setTimeout(checkPass,120);
+}
+function clearPass(){pass=pass.slice(0,-1);document.getElementById("display").textContent=pass?("•".repeat(pass.length)+" ".repeat(6-pass.length)):"••••••"}
+function checkPass(){
+ const hint=document.getElementById("hint"), card=document.getElementById("lockCard");
+ if(pass==="220908"){
+   hint.textContent="Password benar ♡ Hadiahnya terbuka...";
+   setTimeout(()=>go(1),650);
+ }else{
+   hint.textContent="Password salah. Coba lagi ya ♡";
+   card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake");
+   pass="";setTimeout(()=>document.getElementById("display").textContent="••••••",250);
+ }
+}
+function makeFlowers(){
+ const box=document.getElementById("flowerFall");
+ box.innerHTML="";
+ for(let i=0;i<34;i++){
+  const x=document.createElement("i");x.style.left=Math.random()*100+"%";x.style.animationDelay=Math.random()*1.6+"s";
+  x.style.transform="rotate("+Math.random()*360+"deg)";box.appendChild(x);
+ }
+}
+function blow(){
+ const flame=document.getElementById("flame"), msg=document.getElementById("candleMsg");
+ if(!flame.classList.contains("off")){
+  flame.classList.add("off");msg.textContent="Harapannya sudah terkirim ✨ Semoga menjadi nyata.";
+  for(let i=0;i<18;i++){
+   const s=document.createElement("span");s.className="spark";s.style.left=(35+Math.random()*30)+"%";s.style.top=(25+Math.random()*30)+"%";
+   document.getElementById("decor").appendChild(s);
+  }
+ }
+}
+let picked=0;
+function pickFlower(el){
+ if(el.classList.contains("collected"))return;
+ picked++;el.classList.add("collected");
+ document.getElementById("bouquetMsg").textContent=picked+" / 5 bunga terkumpul";
+ if(picked===5){
+  document.getElementById("bouquetMsg").textContent="Bouquet untuk Ara sudah mekar sempurna ♡";
+  confetti();
+ }
+}
+function confetti(){
+ for(let i=0;i<25;i++){
+  const e=document.createElement("i");e.style.cssText=`position:fixed;z-index:30;left:${45+Math.random()*10}%;top:45%;width:7px;height:12px;background:${["#d8879b","#d5a65d","#fff","#9b6b7b"][i%4]};transform:rotate(${Math.random()*360}deg);animation:fall ${1.2+Math.random()*1.2}s linear forwards`;
+  document.body.appendChild(e);setTimeout(()=>e.remove(),2600);
+ }
+}
+function toggleMusic(){
+  document.getElementById("vinyl").classList.toggle("play");
+}
+function finalFlowers(){
+ const box=document.getElementById("finalFlowers");
+ box.innerHTML="";
+ for(let i=0;i<45;i++){
+  const x=document.createElement("i");
+  x.style.left=Math.random()*100+"%";
+  x.style.animationDelay=(Math.random()*1.8)+"s";
+  x.style.background=["#d8879b","#e9b5c3","#d5a65d","#fff"][i%4];
+  x.style.transform="rotate("+Math.random()*360+"deg)";
+  box.appendChild(x);
+ }
+}
+
+function restartAll(){
+  current=0; pass=""; picked=0;
+  document.getElementById("display").textContent="••••••";
+  document.getElementById("hint").textContent="Passwordnya ulang tahun kamu cantik ♡";
+  document.getElementById("flame").classList.remove("off");
+  document.getElementById("candleMsg").textContent="Pencet lilinnya untuk membuat harapan ✨";
+  document.querySelectorAll(".flower.collected").forEach(x=>x.classList.remove("collected"));
+  document.getElementById("bouquetMsg").textContent="0 / 5 bunga terkumpul";
+  document.getElementById("finalFlowers").innerHTML="";
+  show("lock");
+}
+
+
+function resetLetterScroll(){
+  const el=document.querySelector(".letter-scroll");
+  if(el) el.scrollTop=0;
+}
+const originalGo = go;
+go = function(index){
+  originalGo(index);
+  if(index===4) setTimeout(resetLetterScroll, 300);
+};
+
+</script>
+</body>
+</html>
